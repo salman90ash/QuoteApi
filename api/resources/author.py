@@ -38,3 +38,4 @@ class AuthorResource(Resource):
 
     def delete(self, quote_id):
         raise NotImplemented("Метод не реализован")
+
