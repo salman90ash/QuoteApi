@@ -1,4 +1,4 @@
-from api import Resource, reqparse, db
+from api import Resource, reqparse, db, auth
 from api.models.author import AuthorModel
 from api.schemas.author import author_schema, authors_schema
 
@@ -42,6 +42,7 @@ class AuthorListResource(Resource):
         authors = AuthorModel.query.all()
         return authors_schema.dump(authors), 200
 
+    @auth.login_required()
     def post(self):
         parser = reqparse.RequestParser()
         parser.add_argument("name", required=True)
